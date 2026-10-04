@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}{{ text.title_en }} — Reading Lab{% endblock %}
+{% block body_class %}reading-page{% endblock %}
+{% block content %}
+<section class="reader-shell"><div class="container reader-container">
+  <header class="reader-nav"><a href="{{ url_for('learning.reading_library') }}"><i class="bi bi-arrow-left"></i> Todos os textos</a><span>Nível {{ text.level }} · {{ text.category }}</span></header>
+  <article class="reader-card">
+    <div class="reader-title"><div class="reading-icon large"><i class="bi {{ text.icon }}"></i></div><div><span class="eyebrow">READING {{ text.position }}</span><h1>{{ text.title_en }}</h1><p>{{ text.title_pt }}</p></div>{% if progress and progress.completed %}<span class="completed-badge"><i class="bi bi-check-circle-fill"></i> Concluído</span>{% endif %}</div>
+    <div class="reader-toolbar"><button class="btn btn-primary" id="listenNormal"><i class="bi bi-play-fill"></i> Ouvir normal</button><button class="btn btn-outline-primary" id="listenSlow"><i class="bi bi-speedometer"></i> Ouvir devagar</button><button class="btn btn-outline-secondary" id="stopAudio"><i class="bi bi-stop-fill"></i> Parar</button><button class="btn btn-outline-secondary ms-lg-auto" id="toggleTranslation"><i class="bi bi-translate"></i> Mostrar tradução</button></div>
+    <div class="reading-body" id="englishText">{% for paragraph in text.paragraphs_en %}<p>{{ paragraph }}</p>{% endfor %}</div>
+    <div class="translation-box d-none" id="translationBox"><span>TRADUÇÃO EM PORTUGUÊS</span>{% for paragraph in text.paragraphs_pt %}<p>{{ paragraph }}</p>{% endfor %}</div>
+  </article>
+
+  <section class="reader-section"><div class="section-title"><span>01</span><div><h2>Vocabulary Builder</h2><p>Toque no áudio e repita cada expressão.</p></div></div><div class="reader-vocab">{% for en, pt in text.vocabulary %}<button type="button" data-speak="{{ en }}"><i class="bi bi-volume-up-fill"></i><strong>{{ en }}</strong><span>{{ pt }}</span></button>{% endfor %}</div></section>
+
+  <section class="reader-section"><div class="section-title"><span>02</span><div><h2>Shadowing Practice</h2><p>Ouça uma frase, repita imediatamente e compare sua pronúncia.</p></div></div><div id="shadowingList" class="shadowing-list"></div><div class="speech-panel"><div><span class="eyebrow">SPEAK NOW</span><p id="targetSentence">Selecione uma frase acima.</p></div><button class="btn btn-primary" id="startSpeech" disabled><i class="bi bi-mic-fill"></i> Falar e comparar</button><div class="speech-result d-none" id="speechResult"><span>O navegador entendeu:</span><strong id="speechTranscript"></strong><div class="speech-score"><span id="speechScoreBar"></span></div><b id="speechScoreText"></b></div><p class="privacy-note"><i class="bi bi-shield-check"></i> O áudio é processado pelo recurso de voz do navegador e não é salvo pelo LinguaQuest.</p></div></section>
+
+  <section class="reader-section"><div class="section-title"><span>03</span><div><h2>Reading Check</h2><p>Responda em inglês para verificar sua compreensão.</p></div></div><div id="readingQuiz" class="reading-quiz"></div></section>
+
+  <section class="complete-reading"><div><span class="eyebrow">FINAL STEP</span><h2>Concluir prática</h2><p>Marque o texto como estudado depois de ler, ouvir e praticar a fala.</p></div><button class="btn btn-primary btn-lg" id="completeReading"><i class="bi bi-check2-circle"></i> Concluir e ganhar 25 XP</button><p class="completion-message d-none" id="completionMessage"></p></section>
+</div></section>
+<script id="readingData" type="application/json">{{ {'slug': text.slug, 'body_en': text.body_en, 'questions': text.questions}|tojson }}</script>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/reading.js') }}"></script>{% endblock %}

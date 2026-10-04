@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Meus cartões — LinguaQuest{% endblock %}
+{% block content %}
+<section class="profile-hero"><div class="container py-5">
+  <div class="row align-items-center g-4"><div class="col-auto">
+    <div class="avatar-wrap">{% if g.user['avatar_path'] %}<img src="{{ url_for('profile.media', filename=g.user['avatar_path']) }}" alt="Foto de {{ g.user['name'] }}">{% else %}<i class="bi bi-person-fill"></i>{% endif %}</div>
+  </div><div class="col"><span class="eyebrow">SEU ESPAÇO</span><h1>{{ g.user['name'] }}</h1><p>Crie cartões com suas próprias imagens, palavras e traduções.</p></div></div>
+</div></section>
+<div class="container pb-5"><div class="row g-4">
+  <aside class="col-lg-4"><div class="panel-card sticky-lg-top profile-tools">
+    <h2><i class="bi bi-camera"></i> Foto de perfil</h2><p>JPG, PNG ou WEBP, até 5 MB. A imagem será recortada e compactada.</p>
+    <form method="post" action="{{ url_for('profile.avatar') }}" enctype="multipart/form-data" class="vstack gap-3">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}"><input class="form-control" type="file" name="avatar" accept="image/jpeg,image/png,image/webp" required><button class="btn btn-outline-primary" type="submit">Otimizar e salvar</button>
+    </form><hr>
+    <h2><i class="bi bi-plus-square"></i> Novo cartão</h2>
+    <form method="post" action="{{ url_for('profile.create_card') }}" enctype="multipart/form-data" class="vstack gap-3">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      <div><label class="form-label" for="english">Palavra ou frase em inglês</label><input class="form-control" id="english" name="english" maxlength="100" required></div>
+      <div><label class="form-label" for="portuguese">Tradução em português</label><input class="form-control" id="portuguese" name="portuguese" maxlength="100" required></div>
+      <div><label class="form-label" for="image">Imagem</label><input class="form-control" id="image" type="file" name="image" accept="image/jpeg,image/png,image/webp" required></div>
+      <button class="btn btn-primary" type="submit"><i class="bi bi-magic"></i> Criar cartão</button>
+    </form>
+  </div></aside>
+  <section class="col-lg-8"><div class="d-flex justify-content-between align-items-center mb-3"><div><span class="eyebrow">MEMÓRIA VISUAL</span><h2 class="mb-0">Minha coleção</h2></div><span class="count-pill">{{ cards|length }} cartões</span></div>
+    {% if cards %}<div class="custom-card-grid">{% for card in cards %}
+      <article class="vocab-card"><img src="{{ url_for('profile.media', filename=card.thumb_path) }}" alt="Imagem para {{ card.english }}" loading="lazy"><div class="vocab-card-body"><div><h3>{{ card.english }}</h3><p>{{ card.portuguese }}</p></div><button class="speak-mini" type="button" data-speak="{{ card.english }}" aria-label="Ouvir {{ card.english }}"><i class="bi bi-volume-up-fill"></i></button></div><form method="post" action="{{ url_for('profile.delete_card', card_id=card.id) }}" onsubmit="return confirm('Excluir este cartão?')"><input type="hidden" name="csrf_token" value="{{ csrf_token }}"><button class="delete-card" type="submit" aria-label="Excluir cartão"><i class="bi bi-trash3"></i></button></form></article>
+    {% endfor %}</div>{% else %}<div class="blank-collection"><i class="bi bi-images"></i><h3>Sua coleção começa aqui</h3><p>Adicione uma imagem e associe uma palavra em inglês à tradução.</p></div>{% endif %}
+  </section>
+</div></div>
+{% endblock %}

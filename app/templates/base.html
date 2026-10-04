@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>{% block title %}LinguaQuest{% endblock %}</title>
+  <meta name="description" content="Aprenda inglês com trilhas, áudio, repetição espaçada e desafios para tecnologia.">
+  <meta name="theme-color" content="#003135">
+  <script>
+    (() => {
+      const saved = localStorage.getItem('lq-theme');
+      document.documentElement.dataset.theme = saved || 'light';
+      document.documentElement.dataset.fontScale = localStorage.getItem('lq-font-scale') || '100';
+      if (localStorage.getItem('lq-contrast') === 'true') document.documentElement.classList.add('high-contrast');
+      if (localStorage.getItem('lq-motion') === 'reduced') document.documentElement.classList.add('reduce-motion');
+    })();
+  </script>
+  <link href="{{ url_for('static', filename='vendor/bootstrap.min.css', v='5.3.8') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.min.css', v='1.13.1') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css', v='5.0') }}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <nav class="navbar navbar-expand-xl app-nav sticky-top" aria-label="Navegação principal">
+    <div class="container-fluid app-nav-inner">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('main.index') }}">
+        <span class="brand-mark"><i class="bi bi-chat-square-text-fill"></i></span>
+        <span>Lingua<span>Quest</span></span>
+      </a>
+      <div class="nav-utilities ms-auto order-xl-3">
+        <button class="nav-icon-button" id="themeToggle" type="button" aria-label="Alternar tema claro e escuro" aria-pressed="false" title="Alternar tema">
+          <i class="bi bi-moon-stars-fill theme-dark-icon" aria-hidden="true"></i><i class="bi bi-sun-fill theme-light-icon" aria-hidden="true"></i>
+        </button>
+        <button class="nav-icon-button" id="accessibilityToggle" type="button" aria-label="Abrir opções de acessibilidade" aria-expanded="false" aria-controls="accessibilityPanel" title="Acessibilidade">
+          <i class="bi bi-universal-access-circle" aria-hidden="true"></i>
+        </button>
+      </div>
+      <aside class="accessibility-panel" id="accessibilityPanel" aria-label="Opções de acessibilidade" hidden>
+        <div class="accessibility-head"><strong>Acessibilidade</strong><button type="button" id="closeAccessibility" aria-label="Fechar opções"><i class="bi bi-x-lg"></i></button></div>
+        <p>Ajuste a leitura sem perder seu progresso.</p>
+        <div class="accessibility-row" role="group" aria-label="Tamanho do texto">
+          <span>Tamanho do texto</span><div><button type="button" data-font-action="decrease" aria-label="Diminuir texto">A−</button><button type="button" data-font-action="increase" aria-label="Aumentar texto">A+</button></div>
+        </div>
+        <button class="accessibility-switch" id="contrastToggle" type="button" aria-pressed="false"><span><i class="bi bi-circle-half"></i> Alto contraste</span><i class="bi bi-toggle-off switch-icon"></i></button>
+        <button class="accessibility-switch" id="motionToggle" type="button" aria-pressed="false"><span><i class="bi bi-pause-circle"></i> Reduzir movimentos</span><i class="bi bi-toggle-off switch-icon"></i></button>
+        <button class="accessibility-reset" id="accessibilityReset" type="button">Restaurar padrão</button>
+      </aside>
+      {% if g.user %}
+      <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-label="Abrir menu" aria-controls="mainNav" aria-expanded="false"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('main.dashboard') }}"><i class="bi bi-house-door-fill"></i> Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('main.dashboard') }}#mundos"><i class="bi bi-journal-bookmark-fill"></i> Cursos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('main.dashboard') }}#laboratorios"><i class="bi bi-rocket-takeoff-fill"></i> Prática</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('main.dashboard') }}#aulas"><i class="bi bi-people-fill"></i> Minhas aulas</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('learning.reading_library') }}"><i class="bi bi-compass-fill"></i> Explorar</a></li>
+          <li class="nav-item xp-pill"><i class="bi bi-lightning-charge-fill"></i> {{ g.user['xp'] }} XP</li>
+          <li class="nav-item">
+            <form action="{{ url_for('auth.logout') }}" method="post">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+              <button class="btn btn-sm btn-outline-light" type="submit" title="Sair"><i class="bi bi-box-arrow-right"></i></button>
+            </form>
+          </li>
+        </ul>
+      </div>
+      {% else %}
+      <div class="d-flex gap-2 ms-3 order-xl-2">
+        <a class="btn btn-link nav-login" href="{{ url_for('auth.login') }}">Entrar</a>
+        <a class="btn btn-primary btn-sm px-3" href="{{ url_for('auth.register') }}">Começar</a>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+
+  <main id="conteudo">
+    <div class="flash-wrap container" aria-live="polite">
+      {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show shadow-sm" role="alert">
+        {{ message }}<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+      </div>
+      {% endfor %}
+    </div>
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="app-footer">
+    <p><strong>LinguaQuest</strong> — inglês que sai da tela e entra na sua rotina.</p>
+    <p class="icon-credits">
+      Ícones criados por
+      <a href="https://www.flaticon.com/free-icon/vocabulary_10776106" target="_blank" rel="noopener noreferrer">Flat Icons</a>,
+      <a href="https://www.flaticon.com/free-icon/headphones_6305336" target="_blank" rel="noopener noreferrer">Magnific</a>,
+      <a href="https://www.flaticon.com/free-icon/gamification_10620582" target="_blank" rel="noopener noreferrer">Uniconlabs</a> e
+      <a href="https://www.flaticon.com/free-icon/online-learning_12571553" target="_blank" rel="noopener noreferrer">Awicon</a>
+      — <a href="https://www.flaticon.com/" target="_blank" rel="noopener noreferrer">Flaticon</a>.
+    </p>
+  </footer>
+  <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js', v='5.3.8') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js', v='5.0') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

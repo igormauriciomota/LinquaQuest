@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}{{ lesson.title }} — LinguaQuest{% endblock %}
+{% block body_class %}lesson-page{% endblock %}
+{% block content %}
+<section class="lesson-shell" data-review-mode="{{ 'true' if review_mode else 'false' }}" data-answer-url="{{ answer_url_template }}">
+  <div class="container lesson-container">
+    <header class="lesson-header">
+      <a class="close-lesson" href="{{ url_for('main.dashboard') }}" aria-label="Fechar lição"><i class="bi bi-x-lg"></i></a>
+      <div class="lesson-progress" role="progressbar" aria-label="Progresso da lição"><span id="lessonProgress"></span></div>
+      <div class="lesson-xp"><i class="bi bi-lightning-charge-fill"></i> <span id="earnedXp">0</span> XP</div>
+    </header>
+    <div class="lesson-intro" id="lessonIntro">
+      <div class="lesson-hero-icon color-{{ lesson.color }}"><i class="bi {{ lesson.icon }}"></i></div>
+      <span class="eyebrow">{% if lesson.source_label %}AULA PRESENCIAL · {{ lesson.source_label }}{% else %}{{ 'REVISÃO PROGRAMADA' if review_mode else 'NOVA LIÇÃO' }}{% endif %}</span>
+      <h1>{{ lesson.title }}</h1><p>{{ lesson.subtitle }}</p>
+      {% if lesson.objective %}<div class="objective"><i class="bi bi-bullseye"></i><span><strong>Learning goal</strong>{{ lesson.objective }}{% if lesson.objective_pt %}<small>{{ lesson.objective_pt }}</small>{% endif %}</span></div>{% endif %}
+      {% if lesson.vocabulary_preview %}
+      <details class="classroom-preview"><summary><i class="bi bi-journal-text"></i> Ver conteúdo bilíngue da aula</summary><div class="preview-content"><div><h3>Vocabulary</h3><div class="preview-chips">{% for en, pt in lesson.vocabulary_preview %}<button type="button" data-speak="{{ en }}"><strong>{{ en }}</strong><span>{{ pt }}</span><i class="bi bi-volume-up"></i></button>{% endfor %}</div></div><div><h3>Sentences to practice</h3><ul class="phrase-preview">{% for en, pt in lesson.phrases_preview %}<li><button type="button" data-speak="{{ en }}"><i class="bi bi-volume-up"></i></button><span><strong>{{ en }}</strong>{{ pt }}</span></li>{% endfor %}</ul></div><div><h3>Conversation questions</h3><ol class="question-preview">{% for en, pt in lesson.questions_preview %}<li><strong>{{ en }}</strong><span>{{ pt }}</span></li>{% endfor %}</ol></div></div></details>
+      {% endif %}
+      {% if lesson.slug == 'numeros-0-50' %}<a class="number-lab-link" href="{{ url_for('learning.number_lab') }}"><i class="bi bi-grid-3x3-gap"></i> Abrir laboratório de 0 a 50</a>{% endif %}
+      <button class="btn btn-primary btn-lg px-5" id="startLesson">Começar <i class="bi bi-arrow-right"></i></button>
+    </div>
+    <div class="exercise-stage d-none" id="exerciseStage">
+      <div class="exercise-counter" id="exerciseCounter"></div>
+      <div class="exercise-card">
+        <button class="audio-button d-none" id="audioButton" type="button" aria-label="Ouvir em inglês"><i class="bi bi-volume-up-fill"></i><span>Ouvir</span></button>
+        <p class="exercise-instruction" id="exerciseInstruction"></p>
+        <h2 id="exercisePrompt"></h2>
+        <div id="exerciseArea"></div>
+      </div>
+      <div class="answer-feedback d-none" id="answerFeedback" role="status">
+        <div class="feedback-icon"></div><div><strong></strong><p></p></div>
+      </div>
+      <div class="exercise-actions"><button class="btn btn-primary btn-lg" id="checkAnswer" disabled>Verificar</button><button class="btn btn-primary btn-lg d-none" id="nextExercise">Continuar</button></div>
+    </div>
+    <div class="result-card d-none" id="resultCard">
+      <div class="result-burst"><i class="bi bi-trophy-fill"></i></div><span class="eyebrow">MISSÃO CONCLUÍDA</span><h1 id="resultTitle">Muito bem!</h1>
+      <div class="result-score"><strong id="resultScore">0%</strong><span>de acertos</span></div>
+      <div class="result-grid"><div><i class="bi bi-check2-circle"></i><strong id="resultCorrect"></strong><span>respostas certas</span></div><div><i class="bi bi-lightning-charge-fill"></i><strong id="resultXp"></strong><span>XP conquistado</span></div></div>
+      <a class="btn btn-primary btn-lg" href="{{ url_for('main.dashboard') }}">Voltar para a trilha</a>
+    </div>
+  </div>
+</section>
+<script id="exerciseData" type="application/json">{{ exercises|tojson }}</script>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/game.js') }}"></script>{% endblock %}

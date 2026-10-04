@@ -1,0 +1,669 @@
+{
+  "title": "Família, cidade e cumprimentos",
+  "subtitle": "Family, cities & greetings",
+  "description": "64 trechos bilíngues com áudio americano em velocidade normal e lenta.",
+  "groups": [
+    {
+      "slug": "grupo-1",
+      "title": "Palavras curtas"
+    },
+    {
+      "slug": "grupo-2",
+      "title": "Frases em partes"
+    },
+    {
+      "slug": "grupo-3",
+      "title": "Frases completas"
+    },
+    {
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza"
+    },
+    {
+      "slug": "grupo-5",
+      "title": "Revisão da apresentação"
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "english": "grandmother",
+      "portuguese": "avó",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/01-normal.mp3",
+      "audio_slow": "audio/family/01-slow.mp3"
+    },
+    {
+      "id": 2,
+      "english": "grandfather",
+      "portuguese": "avô",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/02-normal.mp3",
+      "audio_slow": "audio/family/02-slow.mp3"
+    },
+    {
+      "id": 3,
+      "english": "grandma",
+      "portuguese": "vovó",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/03-normal.mp3",
+      "audio_slow": "audio/family/03-slow.mp3"
+    },
+    {
+      "id": 4,
+      "english": "grandpa",
+      "portuguese": "vovô",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/04-normal.mp3",
+      "audio_slow": "audio/family/04-slow.mp3"
+    },
+    {
+      "id": 5,
+      "english": "grandparents",
+      "portuguese": "avós",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/05-normal.mp3",
+      "audio_slow": "audio/family/05-slow.mp3"
+    },
+    {
+      "id": 6,
+      "english": "wife",
+      "portuguese": "esposa",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/06-normal.mp3",
+      "audio_slow": "audio/family/06-slow.mp3"
+    },
+    {
+      "id": 7,
+      "english": "husband",
+      "portuguese": "marido",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/07-normal.mp3",
+      "audio_slow": "audio/family/07-slow.mp3"
+    },
+    {
+      "id": 8,
+      "english": "dog",
+      "portuguese": "cachorro / cão",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/08-normal.mp3",
+      "audio_slow": "audio/family/08-slow.mp3"
+    },
+    {
+      "id": 9,
+      "english": "family",
+      "portuguese": "família",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/09-normal.mp3",
+      "audio_slow": "audio/family/09-slow.mp3"
+    },
+    {
+      "id": 10,
+      "english": "city",
+      "portuguese": "cidade",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/10-normal.mp3",
+      "audio_slow": "audio/family/10-slow.mp3"
+    },
+    {
+      "id": 11,
+      "english": "town",
+      "portuguese": "cidade menor / localidade",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/11-normal.mp3",
+      "audio_slow": "audio/family/11-slow.mp3"
+    },
+    {
+      "id": 12,
+      "english": "countryside",
+      "portuguese": "campo / zona rural",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/12-normal.mp3",
+      "audio_slow": "audio/family/12-slow.mp3"
+    },
+    {
+      "id": 13,
+      "english": "country",
+      "portuguese": "país; campo, dependendo do contexto",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/13-normal.mp3",
+      "audio_slow": "audio/family/13-slow.mp3"
+    },
+    {
+      "id": 14,
+      "english": "sleepwalker",
+      "portuguese": "sonâmbulo / sonâmbula",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/14-normal.mp3",
+      "audio_slow": "audio/family/14-slow.mp3"
+    },
+    {
+      "id": 15,
+      "english": "mother",
+      "portuguese": "mãe",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/15-normal.mp3",
+      "audio_slow": "audio/family/15-slow.mp3"
+    },
+    {
+      "id": 16,
+      "english": "father",
+      "portuguese": "pai",
+      "slug": "grupo-1",
+      "title": "Palavras curtas",
+      "position": 1,
+      "audio_normal": "audio/family/16-normal.mp3",
+      "audio_slow": "audio/family/16-slow.mp3"
+    },
+    {
+      "id": 17,
+      "english": "Can you",
+      "portuguese": "Você pode / você consegue",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/17-normal.mp3",
+      "audio_slow": "audio/family/17-slow.mp3"
+    },
+    {
+      "id": 18,
+      "english": "say hello",
+      "portuguese": "dizer olá",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/18-normal.mp3",
+      "audio_slow": "audio/family/18-slow.mp3"
+    },
+    {
+      "id": 19,
+      "english": "in another language",
+      "portuguese": "em outro idioma",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/19-normal.mp3",
+      "audio_slow": "audio/family/19-slow.mp3"
+    },
+    {
+      "id": 20,
+      "english": "Can you say hello in another language?",
+      "portuguese": "Você sabe dizer olá em outro idioma?",
+      "slug": "grupo-3",
+      "title": "Frases completas",
+      "position": 3,
+      "audio_normal": "audio/family/20-normal.mp3",
+      "audio_slow": "audio/family/20-slow.mp3"
+    },
+    {
+      "id": 21,
+      "english": "I live",
+      "portuguese": "Eu moro",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/21-normal.mp3",
+      "audio_slow": "audio/family/21-slow.mp3"
+    },
+    {
+      "id": 22,
+      "english": "with my wife",
+      "portuguese": "com minha esposa",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/22-normal.mp3",
+      "audio_slow": "audio/family/22-slow.mp3"
+    },
+    {
+      "id": 23,
+      "english": "and my dog",
+      "portuguese": "e meu cachorro",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/23-normal.mp3",
+      "audio_slow": "audio/family/23-slow.mp3"
+    },
+    {
+      "id": 24,
+      "english": "I live with my wife and my dog.",
+      "portuguese": "Moro com minha esposa e meu cachorro.",
+      "slug": "grupo-3",
+      "title": "Frases completas",
+      "position": 3,
+      "audio_normal": "audio/family/24-normal.mp3",
+      "audio_slow": "audio/family/24-slow.mp3"
+    },
+    {
+      "id": 25,
+      "english": "Are you from",
+      "portuguese": "Você é de",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/25-normal.mp3",
+      "audio_slow": "audio/family/25-slow.mp3"
+    },
+    {
+      "id": 26,
+      "english": "a big city",
+      "portuguese": "uma cidade grande",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/26-normal.mp3",
+      "audio_slow": "audio/family/26-slow.mp3"
+    },
+    {
+      "id": 27,
+      "english": "or a small town",
+      "portuguese": "ou uma cidade pequena",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/27-normal.mp3",
+      "audio_slow": "audio/family/27-slow.mp3"
+    },
+    {
+      "id": 28,
+      "english": "Are you from a big city or a small town?",
+      "portuguese": "Você é de uma cidade grande ou de uma cidade pequena?",
+      "slug": "grupo-3",
+      "title": "Frases completas",
+      "position": 3,
+      "audio_normal": "audio/family/28-normal.mp3",
+      "audio_slow": "audio/family/28-slow.mp3"
+    },
+    {
+      "id": 29,
+      "english": "but I work",
+      "portuguese": "mas eu trabalho",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/29-normal.mp3",
+      "audio_slow": "audio/family/29-slow.mp3"
+    },
+    {
+      "id": 30,
+      "english": "in a big city",
+      "portuguese": "em uma cidade grande",
+      "slug": "grupo-2",
+      "title": "Frases em partes",
+      "position": 2,
+      "audio_normal": "audio/family/30-normal.mp3",
+      "audio_slow": "audio/family/30-slow.mp3"
+    },
+    {
+      "id": 31,
+      "english": "But I work in a big city.",
+      "portuguese": "Mas trabalho em uma cidade grande.",
+      "slug": "grupo-3",
+      "title": "Frases completas",
+      "position": 3,
+      "audio_normal": "audio/family/31-normal.mp3",
+      "audio_slow": "audio/family/31-slow.mp3"
+    },
+    {
+      "id": 32,
+      "english": "I live in the countryside.",
+      "portuguese": "Moro no campo / na zona rural.",
+      "slug": "grupo-3",
+      "title": "Frases completas",
+      "position": 3,
+      "audio_normal": "audio/family/32-normal.mp3",
+      "audio_slow": "audio/family/32-slow.mp3"
+    },
+    {
+      "id": 33,
+      "english": "I live in a small town, but I work in a big city.",
+      "portuguese": "Moro em uma cidade pequena, mas trabalho em uma cidade grande.",
+      "slug": "grupo-3",
+      "title": "Frases completas",
+      "position": 3,
+      "audio_normal": "audio/family/33-normal.mp3",
+      "audio_slow": "audio/family/33-slow.mp3"
+    },
+    {
+      "id": 34,
+      "english": "I'm from Brazil.",
+      "portuguese": "Sou do Brasil.",
+      "slug": "grupo-3",
+      "title": "Frases completas",
+      "position": 3,
+      "audio_normal": "audio/family/34-normal.mp3",
+      "audio_slow": "audio/family/34-slow.mp3"
+    },
+    {
+      "id": 35,
+      "english": "I live in Brazil.",
+      "portuguese": "Moro no Brasil.",
+      "slug": "grupo-3",
+      "title": "Frases completas",
+      "position": 3,
+      "audio_normal": "audio/family/35-normal.mp3",
+      "audio_slow": "audio/family/35-slow.mp3"
+    },
+    {
+      "id": 36,
+      "english": "Hello!",
+      "portuguese": "Olá!",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/36-normal.mp3",
+      "audio_slow": "audio/family/36-slow.mp3"
+    },
+    {
+      "id": 37,
+      "english": "Hi!",
+      "portuguese": "Oi!",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/37-normal.mp3",
+      "audio_slow": "audio/family/37-slow.mp3"
+    },
+    {
+      "id": 38,
+      "english": "Good morning!",
+      "portuguese": "Bom dia!",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/38-normal.mp3",
+      "audio_slow": "audio/family/38-slow.mp3"
+    },
+    {
+      "id": 39,
+      "english": "Good afternoon!",
+      "portuguese": "Boa tarde!",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/39-normal.mp3",
+      "audio_slow": "audio/family/39-slow.mp3"
+    },
+    {
+      "id": 40,
+      "english": "Good evening!",
+      "portuguese": "Boa noite! — ao cumprimentar.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/40-normal.mp3",
+      "audio_slow": "audio/family/40-slow.mp3"
+    },
+    {
+      "id": 41,
+      "english": "Good night!",
+      "portuguese": "Boa noite! — ao se despedir à noite ou antes de dormir.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/41-normal.mp3",
+      "audio_slow": "audio/family/41-slow.mp3"
+    },
+    {
+      "id": 42,
+      "english": "How are you?",
+      "portuguese": "Como você está? / Tudo bem?",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/42-normal.mp3",
+      "audio_slow": "audio/family/42-slow.mp3"
+    },
+    {
+      "id": 43,
+      "english": "I'm good, thanks.",
+      "portuguese": "Estou bem, obrigado(a).",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/43-normal.mp3",
+      "audio_slow": "audio/family/43-slow.mp3"
+    },
+    {
+      "id": 44,
+      "english": "And you?",
+      "portuguese": "E você?",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/44-normal.mp3",
+      "audio_slow": "audio/family/44-slow.mp3"
+    },
+    {
+      "id": 45,
+      "english": "Nice to meet you.",
+      "portuguese": "Prazer em conhecer você.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/45-normal.mp3",
+      "audio_slow": "audio/family/45-slow.mp3"
+    },
+    {
+      "id": 46,
+      "english": "Nice to meet you, too.",
+      "portuguese": "Prazer em conhecer você também.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/46-normal.mp3",
+      "audio_slow": "audio/family/46-slow.mp3"
+    },
+    {
+      "id": 47,
+      "english": "What's your name?",
+      "portuguese": "Qual é o seu nome?",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/47-normal.mp3",
+      "audio_slow": "audio/family/47-slow.mp3"
+    },
+    {
+      "id": 48,
+      "english": "My name is Igor.",
+      "portuguese": "Meu nome é Igor.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/48-normal.mp3",
+      "audio_slow": "audio/family/48-slow.mp3"
+    },
+    {
+      "id": 49,
+      "english": "Where are you from?",
+      "portuguese": "De onde você é?",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/49-normal.mp3",
+      "audio_slow": "audio/family/49-slow.mp3"
+    },
+    {
+      "id": 50,
+      "english": "Where do you live?",
+      "portuguese": "Onde você mora?",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/50-normal.mp3",
+      "audio_slow": "audio/family/50-slow.mp3"
+    },
+    {
+      "id": 51,
+      "english": "I'm learning English.",
+      "portuguese": "Estou aprendendo inglês.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/51-normal.mp3",
+      "audio_slow": "audio/family/51-slow.mp3"
+    },
+    {
+      "id": 52,
+      "english": "Could you speak more slowly, please?",
+      "portuguese": "Você poderia falar mais devagar, por favor?",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/52-normal.mp3",
+      "audio_slow": "audio/family/52-slow.mp3"
+    },
+    {
+      "id": 53,
+      "english": "Could you repeat that, please?",
+      "portuguese": "Você poderia repetir isso, por favor?",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/53-normal.mp3",
+      "audio_slow": "audio/family/53-slow.mp3"
+    },
+    {
+      "id": 54,
+      "english": "Sorry, I don't understand.",
+      "portuguese": "Desculpe, não entendo.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/54-normal.mp3",
+      "audio_slow": "audio/family/54-slow.mp3"
+    },
+    {
+      "id": 55,
+      "english": "Thank you.",
+      "portuguese": "Obrigado(a).",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/55-normal.mp3",
+      "audio_slow": "audio/family/55-slow.mp3"
+    },
+    {
+      "id": 56,
+      "english": "You're welcome.",
+      "portuguese": "De nada.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/56-normal.mp3",
+      "audio_slow": "audio/family/56-slow.mp3"
+    },
+    {
+      "id": 57,
+      "english": "Excuse me.",
+      "portuguese": "Com licença.",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/57-normal.mp3",
+      "audio_slow": "audio/family/57-slow.mp3"
+    },
+    {
+      "id": 58,
+      "english": "Goodbye!",
+      "portuguese": "Tchau!",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/58-normal.mp3",
+      "audio_slow": "audio/family/58-slow.mp3"
+    },
+    {
+      "id": 59,
+      "english": "See you later!",
+      "portuguese": "Até mais!",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/59-normal.mp3",
+      "audio_slow": "audio/family/59-slow.mp3"
+    },
+    {
+      "id": 60,
+      "english": "Have a nice day!",
+      "portuguese": "Tenha um bom dia!",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/60-normal.mp3",
+      "audio_slow": "audio/family/60-slow.mp3"
+    },
+    {
+      "id": 61,
+      "english": "Good to see you again!",
+      "portuguese": "Que bom ver você de novo!",
+      "slug": "grupo-4",
+      "title": "Cumprimentos e gentileza",
+      "position": 4,
+      "audio_normal": "audio/family/61-normal.mp3",
+      "audio_slow": "audio/family/61-slow.mp3"
+    },
+    {
+      "id": 62,
+      "english": "forty-one years old.",
+      "portuguese": "quarenta e um anos de idade.",
+      "slug": "grupo-5",
+      "title": "Revisão da apresentação",
+      "position": 5,
+      "audio_normal": "audio/family/62-normal.mp3",
+      "audio_slow": "audio/family/62-slow.mp3"
+    },
+    {
+      "id": 63,
+      "english": "introduce",
+      "portuguese": "apresentar",
+      "slug": "grupo-5",
+      "title": "Revisão da apresentação",
+      "position": 5,
+      "audio_normal": "audio/family/63-normal.mp3",
+      "audio_slow": "audio/family/63-slow.mp3"
+    },
+    {
+      "id": 64,
+      "english": "Hello! My name is Igor. I am forty-one years old. I'm from Brazil. Nice to meet you!",
+      "portuguese": "Olá! Meu nome é Igor. Tenho quarenta e um anos. Sou do Brasil. Prazer em conhecer você!",
+      "slug": "grupo-5",
+      "title": "Revisão da apresentação",
+      "position": 5,
+      "audio_normal": "audio/family/64-normal.mp3",
+      "audio_slow": "audio/family/64-slow.mp3"
+    }
+  ]
+}

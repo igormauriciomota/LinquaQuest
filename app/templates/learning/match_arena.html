@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}Arena de Pares — LinguaQuest{% endblock %}
+{% block body_class %}arena-page{% endblock %}
+{% block content %}
+<section class="arena-hero">
+  <div class="container-fluid app-wide-container">
+    <a class="back-link" href="{{ url_for('main.dashboard') }}"><i class="bi bi-arrow-left"></i> Voltar para a trilha</a>
+    <div class="arena-hero-grid">
+      <div>
+        <span class="eyebrow"><i class="bi bi-controller"></i> ENGLISH ↔ PORTUGUÊS</span>
+        <h1>Combine. Ouça. <span>Memorize.</span></h1>
+        <p>Escolha uma palavra em inglês à esquerda e encontre seu significado em português à direita. Use mouse, toque ou teclado.</p>
+        <div class="arena-keyboard-tip"><i class="bi bi-keyboard-fill"></i><span><strong>Teclado:</strong> Tab para navegar · Enter ou Espaço para selecionar</span></div>
+      </div>
+      <div class="arena-3d-scene" aria-hidden="true">
+        <div class="word-orbit orbit-one"><span>Hello</span></div>
+        <div class="word-orbit orbit-two"><span>Olá</span></div>
+        <div class="word-core"><i class="bi bi-translate"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="container-fluid app-wide-container arena-main">
+  <section id="categoryPicker" aria-labelledby="categoryTitle">
+    <div class="arena-section-heading">
+      <div><span class="eyebrow">ESCOLHA UM TEMA</span><h2 id="categoryTitle">Qual vocabulário vamos treinar?</h2></div>
+      <span class="arena-total"><i class="bi bi-stars"></i> {{ categories|length }} desafios</span>
+    </div>
+    <div class="arena-category-grid">
+      {% for category in categories %}
+      <button class="arena-category color-{{ category.color }}" type="button" data-category="{{ category.slug }}" aria-label="Treinar {{ category.title_pt }}. {{ category.pair_count }} pares. Melhor pontuação {{ category.best_score }} por cento.">
+        <span class="arena-category-icon"><i class="bi {{ category.icon }}"></i></span>
+        <span class="arena-category-copy"><small>NÍVEL {{ category.level }}</small><strong>{{ category.title }}</strong><span>{{ category.title_pt }} · {{ category.pair_count }} pares</span></span>
+        <span class="arena-category-score">{% if category.completed %}<i class="bi bi-check-circle-fill"></i> {{ category.best_score }}%{% else %}<i class="bi bi-play-fill"></i>{% endif %}</span>
+      </button>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="match-game-shell" id="matchGame" aria-labelledby="matchGameTitle" hidden>
+    <header class="match-game-header">
+      <button class="arena-back-button" id="backToCategories" type="button"><i class="bi bi-arrow-left"></i><span>Temas</span></button>
+      <div class="match-game-title"><span id="matchCategoryLevel"></span><h2 id="matchGameTitle"></h2><p id="matchGameSubtitle"></p></div>
+      <div class="match-score" aria-label="Pontuação"><i class="bi bi-lightning-charge-fill"></i><strong id="matchScore">0</strong><span>pontos</span></div>
+    </header>
+    <div class="match-progress-track" role="progressbar" aria-label="Pares encontrados" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="matchProgress"></span></div>
+    <div class="match-instruction" id="matchInstruction"><i class="bi bi-hand-index-thumb"></i><span>Selecione uma palavra em <strong>inglês</strong> e depois a tradução em <strong>português</strong>.</span></div>
+    <div class="match-live visually-hidden" id="matchLive" role="status" aria-live="polite"></div>
+    <div class="bilingual-board" id="bilingualBoard">
+      <section class="match-language-column english-column" aria-labelledby="englishColumnTitle">
+        <div class="language-heading"><span class="language-flag">EN</span><div><strong id="englishColumnTitle">English</strong><small>Inglês</small></div><i class="bi bi-volume-up-fill"></i></div>
+        <div class="match-word-list" id="englishWords"></div>
+      </section>
+      <div class="match-center-line" aria-hidden="true"><span><i class="bi bi-link-45deg"></i></span></div>
+      <section class="match-language-column portuguese-column" aria-labelledby="portugueseColumnTitle">
+        <div class="language-heading"><span class="language-flag">PT</span><div><strong id="portugueseColumnTitle">Português</strong><small>Tradução</small></div><i class="bi bi-check2-circle"></i></div>
+        <div class="match-word-list" id="portugueseWords"></div>
+      </section>
+    </div>
+  </section>
+
+  <section class="arena-result" id="arenaResult" aria-labelledby="arenaResultTitle" hidden>
+    <div class="result-orb"><i class="bi bi-trophy-fill"></i></div>
+    <span class="eyebrow">RODADA CONCLUÍDA</span>
+    <h2 id="arenaResultTitle">Great job!</h2>
+    <p id="arenaResultMessage"></p>
+    <div class="arena-result-stats"><div><strong id="arenaAccuracy">0%</strong><span>acertos</span></div><div><strong id="arenaXp">+0</strong><span>XP</span></div></div>
+    <div class="d-flex flex-wrap justify-content-center gap-3"><button class="btn btn-primary btn-lg" id="playAgain" type="button"><i class="bi bi-arrow-repeat"></i> Jogar novamente</button><button class="btn btn-outline-primary btn-lg" id="chooseAnother" type="button">Escolher outro tema</button></div>
+  </section>
+</main>
+<script id="matchArenaData" type="application/json">{{ game_data|tojson }}</script>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/match-arena.js') }}"></script>{% endblock %}

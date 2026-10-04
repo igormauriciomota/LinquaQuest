@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Criar conta — LinguaQuest{% endblock %}
+{% block content %}
+<section class="auth-shell"><div class="auth-card">
+  <div class="auth-icon"><i class="bi bi-rocket-takeoff"></i></div><h1>Comece sua jornada</h1><p>Seu progresso ficará salvo neste perfil.</p>
+  <form method="post" class="vstack gap-3">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+    <div><label class="form-label" for="name">Nome</label><input class="form-control form-control-lg" id="name" name="name" maxlength="80" autocomplete="name" required></div>
+    <div><label class="form-label" for="email">E-mail</label><input class="form-control form-control-lg" id="email" name="email" type="email" autocomplete="email" required></div>
+    <div><label class="form-label" for="password">Senha</label><input class="form-control form-control-lg" id="password" name="password" type="password" minlength="8" autocomplete="new-password" required><div class="form-text">Mínimo de 8 caracteres.</div></div>
+    <button class="btn btn-primary btn-lg" type="submit">Criar minha conta</button>
+  </form>
+  <p class="auth-foot">Já tem uma conta? <a href="{{ url_for('auth.login') }}">Entrar</a></p>
+</div></section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Minha jornada — LinguaQuest{% endblock %}
+{% block body_class %}learning-hub-page journey-dashboard-page{% endblock %}
+{% block content %}
+<section class="journey-hero" aria-labelledby="journeyTitle">
+  <div class="journey-hero-overlay" aria-hidden="true"></div>
+  <div class="container-fluid academy-container journey-hero-content">
+    <div class="journey-hero-copy">
+      <span class="journey-eyebrow">CONTINUE APRENDENDO</span>
+      <h1 id="journeyTitle">Sua jornada<br>de inglês</h1>
+      <p>Mais confiança. Mais conexões.<br>Um mundo de possibilidades.</p>
+    </div>
+    <aside class="journey-progress-glass" aria-label="Seu progresso geral">
+      <div class="journey-ring" style="--journey-progress:{{ progress }}%"><strong>{{ progress }}%</strong></div>
+      <div class="journey-progress-copy"><strong>Seu progresso geral</strong><span>Você está no nível <b>{{ level_names[current_level] }}</b></span></div>
+      <div class="journey-stat"><i class="bi bi-fire"></i><strong>{{ g.user['streak'] }}</strong><span>dias seguidos</span></div>
+      <div class="journey-stat"><i class="bi bi-hexagon-fill"></i><strong>{{ g.user['xp'] }}</strong><span>pontos XP</span></div>
+      {% if next_lesson %}<a class="journey-next" href="{{ url_for('learning.lesson', slug=next_lesson.slug) }}">Continuar <i class="bi bi-arrow-right"></i></a>{% endif %}
+    </aside>
+  </div>
+</section>
+
+<div class="journey-content">
+  <section class="container-fluid academy-container journey-section" id="mundos">
+    <header class="journey-section-heading">
+      <div><span class="journey-heading-icon"><i class="bi bi-journal-bookmark"></i></span><h2>Nossos mundos de aprendizado</h2></div>
+      <a href="{{ url_for('main.world', level=current_level) }}">Ver minha jornada completa <i class="bi bi-arrow-right"></i></a>
+    </header>
+    <div class="world-overview-grid">
+      {% for world in world_summaries %}
+      <article class="world-overview-card world-card-{{ world.level }}" data-card-href="{{ url_for('main.world', level=world.level) }}">
+        <header><span class="world-number">{{ world.level }}</span><div><h3>{{ world.title }}</h3><p>{{ world.description }}</p></div><img src="{{ url_for('static', filename=world.icon) }}" alt=""></header>
+        <div class="world-progress-label"><span>{{ world.completed }} de {{ world.total }} fases</span><strong>{{ world.progress }}%</strong></div>
+        <div class="world-progress-track"><span style="width:{{ world.progress }}%"></span></div>
+        <a href="{{ url_for('main.world', level=world.level) }}">{{ 'Continuar aprendendo' if world.level <= current_level else 'Ver prévia do nível' }} <i class="bi bi-arrow-right"></i></a>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="container-fluid academy-container journey-section" id="laboratorios">
+    <header class="journey-section-heading"><div><span class="journey-heading-icon"><i class="bi bi-flask"></i></span><h2>Laboratórios de prática</h2><p>Experiências dinâmicas para acelerar seu aprendizado.</p></div><a href="{{ url_for('learning.match_arena') }}">Praticar mais <i class="bi bi-arrow-right"></i></a></header>
+    <div class="practice-lab-grid">
+      <article class="practice-lab-card" data-card-href="{{ url_for('learning.match_arena') }}"><img src="{{ url_for('static', filename='images/brand/course-everyday.webp') }}" alt="Duas pessoas conversando em inglês."><div class="practice-shade"></div><span class="practice-icon"><i class="bi bi-people-fill"></i></span><div><h3>Arena de Pares</h3><p>Combine inglês e português em 8 temas e 92 associações.</p></div><a href="{{ url_for('learning.match_arena') }}" aria-label="Abrir Arena de Pares"><i class="bi bi-arrow-right"></i></a></article>
+      <article class="practice-lab-card" data-card-href="{{ url_for('learning.family_audio_lab') }}"><img src="{{ url_for('static', filename='images/brand/course-technology.webp') }}" alt="Estudante praticando áudio e tecnologia."><div class="practice-shade"></div><span class="practice-icon teal"><i class="bi bi-mic-fill"></i></span><div><h3>Áudio e Pronúncia</h3><p>Treine sua escuta e fale com mais naturalidade.</p></div><a href="{{ url_for('learning.family_audio_lab') }}" aria-label="Abrir laboratório de áudio"><i class="bi bi-arrow-right"></i></a></article>
+      <article class="practice-lab-card" data-card-href="{{ url_for('learning.reading_library') }}"><img src="{{ url_for('static', filename='images/brand/hero-learning.webp') }}" alt="Estudante praticando leitura e conversação."><div class="practice-shade"></div><span class="practice-icon"><i class="bi bi-book-fill"></i></span><div><h3>Reading & Speaking</h3><p>Explore conteúdos reais e pratique ideias do mundo real.</p></div><a href="{{ url_for('learning.reading_library') }}" aria-label="Abrir laboratório de leitura"><i class="bi bi-arrow-right"></i></a></article>
+    </div>
+  </section>
+
+  <section class="classroom-parallax" id="aulas">
+    <div class="classroom-parallax-overlay"></div>
+    <div class="container-fluid academy-container classroom-parallax-content">
+      <header><span>CONTEÚDO PRESENCIAL, AGORA INTERATIVO</span><h2>Suas aulas viraram experiências.</h2><p>Vocabulário, frases, áudio e desafios organizados em páginas próprias.</p></header>
+      <div class="classroom-glass-grid">
+        {% for unit in classroom_units %}<article data-card-href="{{ url_for('learning.classroom_unit', slug=unit.slug) }}"><span>AULA {{ unit.position }}</span><i class="bi {{ unit.icon }}"></i><h3>{{ unit.title_en }}</h3><p>{{ unit.title_pt }}</p><a href="{{ url_for('learning.classroom_unit', slug=unit.slug) }}">Abrir aula <i class="bi bi-arrow-up-right"></i></a></article>{% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <nav class="journey-quickbar container-fluid academy-container" aria-label="Atalhos do estudante">
+    <span><kbd>Ctrl</kbd><kbd>K</kbd> Pesquisar aulas e conteúdos</span>
+    <div><a href="{{ url_for('learning.review') }}"><i class="bi bi-calendar-check"></i> Minha rotina</a><a href="{{ url_for('profile.index') }}"><i class="bi bi-bar-chart-fill"></i> Meu desempenho</a><a href="{{ url_for('learning.match_arena') }}"><i class="bi bi-star"></i> Conquistas</a></div>
+  </nav>
+</div>
+{% endblock %}

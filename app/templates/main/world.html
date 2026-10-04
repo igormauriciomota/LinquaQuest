@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Mundo {{ level }} — {{ world.name }}{% endblock %}
+{% block body_class %}world-detail-page{% endblock %}
+{% block content %}
+<section class="world-detail-hero world-tone-{{ world.tone }}">
+  <div class="container-fluid academy-container world-detail-grid">
+    <div><a href="{{ url_for('main.dashboard') }}#mundos"><i class="bi bi-arrow-left"></i> Voltar para os mundos</a><span>{{ world.tag|upper }} · MUNDO {{ level }}</span><h1>{{ world.name }}</h1><p>{{ world.description }}</p></div>
+    <aside><img src="{{ url_for('static', filename=world.icon) }}" alt=""><strong>{{ completed }}/{{ lessons|length }}</strong><span>fases concluídas</span><div><span style="width:{{ progress }}%"></span></div></aside>
+  </div>
+</section>
+<div class="container-fluid academy-container world-detail-main">
+  <header><span>TRILHA DO MUNDO {{ level }}</span><h2>Escolha sua próxima fase</h2><p>Complete as atividades em ordem para liberar o próximo desafio.</p></header>
+  <div class="phase-detail-grid">
+    {% for lesson in lessons %}
+    <article class="phase-detail-card {% if lesson.completed %}completed{% elif lesson.unlocked %}available{% else %}locked{% endif %}"{% if lesson.unlocked %} data-card-href="{{ url_for('learning.lesson', slug=lesson.slug) }}"{% endif %}>
+      <span class="phase-detail-number">{{ '%02d'|format(lesson.position) }}</span><i class="bi {{ lesson.icon }}"></i><small>{% if lesson.completed %}CONCLUÍDA{% elif lesson.unlocked %}DISPONÍVEL{% else %}BLOQUEADA{% endif %}</small><h3>{{ lesson.title }}</h3><p>{{ lesson.subtitle }}</p><div><span><i class="bi bi-clock"></i> 8–12 min</span><span><i class="bi bi-puzzle"></i> 5 atividades</span></div><div class="world-progress-track"><span style="width:{{ lesson.best_score }}%"></span></div>
+      {% if lesson.unlocked %}<a href="{{ url_for('learning.lesson', slug=lesson.slug) }}">{{ 'Revisar aula' if lesson.completed else 'Começar fase' }} <i class="bi bi-arrow-right"></i></a>{% else %}<span class="locked-label">Conclua a fase anterior <i class="bi bi-lock-fill"></i></span>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

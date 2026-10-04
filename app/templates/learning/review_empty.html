@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block title %}Revisão em dia — LinguaQuest{% endblock %}
+{% block content %}
+<section class="empty-state container"><div class="empty-illustration"><i class="bi bi-calendar2-check"></i></div><span class="eyebrow">TUDO EM DIA</span><h1>Nenhuma revisão pendente</h1><p>Você já revisou tudo o que estava programado. Continue a trilha para adicionar novas palavras à memória.</p><a class="btn btn-primary btn-lg" href="{{ url_for('main.dashboard') }}">Voltar para a trilha</a></section>
+{% endblock %}

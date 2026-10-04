@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Laboratório de números — LinguaQuest{% endblock %}
+{% block content %}
+<section class="number-hero"><div class="container py-5"><a class="back-link" href="{{ url_for('learning.lesson', slug='numeros-0-50') }}"><i class="bi bi-arrow-left"></i> Voltar à lição</a><span class="eyebrow d-block mt-4">NUMBER LAB</span><h1>Números de 0 a 50</h1><p>Ouça cada número e depois pratique como ditar um telefone em inglês.</p></div></section>
+<div class="container py-5">
+  <section class="phone-lab panel-card mb-5"><div><span class="eyebrow">PHONE CHALLENGE</span><h2>Ditado de telefone</h2><p>Gere um número, ouça os dígitos em inglês e confira a forma escrita. Em telefones, zero também pode ser <strong>oh</strong>.</p></div><div class="phone-screen"><span id="phoneDigits">(31) 96730-5801</span><small id="phoneWords">three one · nine six seven three oh · five eight oh one</small></div><div class="d-flex flex-wrap gap-2"><button class="btn btn-primary" id="hearPhone"><i class="bi bi-volume-up-fill"></i> Ouvir</button><button class="btn btn-outline-primary" id="newPhone"><i class="bi bi-shuffle"></i> Novo número</button><button class="btn btn-outline-secondary" id="toggleWords"><i class="bi bi-eye"></i> Ocultar/mostrar</button></div></section>
+  <div class="section-heading mb-4"><span class="eyebrow">TOQUE PARA OUVIR</span><h2>Mapa dos números</h2></div>
+  <div class="number-grid">{% for number, word in numbers %}<button type="button" class="number-card" data-speak="{{ word }}"><strong>{{ number }}</strong><span>{{ word }}</span><i class="bi bi-volume-up"></i></button>{% endfor %}</div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/numbers.js') }}"></script>{% endblock %}

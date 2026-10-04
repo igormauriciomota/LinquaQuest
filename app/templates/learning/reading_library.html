@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Reading & Speaking Lab — LinguaQuest{% endblock %}
+{% block content %}
+<section class="reading-hero"><div class="container py-5"><span class="eyebrow">READ · LISTEN · SPEAK</span><h1>Reading & Speaking Lab</h1><p>Textos progressivos para desenvolver leitura, compreensão auditiva, vocabulário e confiança para falar.</p><div class="reading-method"><span><i class="bi bi-1-circle-fill"></i> Leia sem traduzir</span><span><i class="bi bi-2-circle-fill"></i> Ouça e acompanhe</span><span><i class="bi bi-3-circle-fill"></i> Repita em voz alta</span><span><i class="bi bi-4-circle-fill"></i> Confira a tradução</span></div></div></section>
+<div class="container py-5">
+  {% for level in [3, 4] %}<section class="mb-5"><div class="level-heading"><div class="level-number">{{ level }}</div><div><span>NÍVEL {{ level }}</span><h2>{{ 'Avançado' if level == 3 else 'Fluente' }}</h2></div><div class="level-line"></div></div><div class="reading-grid">
+    {% for item in texts if item.level == level %}<article class="reading-card {% if item.completed %}completed{% endif %}"><div class="reading-card-top"><span class="reading-icon"><i class="bi {{ item.icon }}"></i></span><span class="reading-status">{% if item.completed %}<i class="bi bi-check-circle-fill"></i> CONCLUÍDO{% else %}TEXTO {{ item.position }}{% endif %}</span></div><span class="reading-category">{{ item.category }}</span><h3>{{ item.title_en }}</h3><p>{{ item.title_pt }}</p><div class="reading-meta"><span><i class="bi bi-clock"></i> 4–6 min</span><span><i class="bi bi-mic"></i> fala</span></div><a class="stretched-link" href="{{ url_for('learning.reading_text', slug=item.slug) }}"><span class="visually-hidden">Abrir {{ item.title_en }}</span></a></article>{% endfor %}
+  </div></section>{% endfor %}
+</div>
+{% endblock %}

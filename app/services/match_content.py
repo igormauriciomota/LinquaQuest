@@ -1,0 +1,117 @@
+"""Vocabulário curado para a Arena de Pares bilíngue."""
+
+MATCH_CATEGORIES = [
+    {
+        "slug": "greetings",
+        "title": "Greetings",
+        "title_pt": "Cumprimentos",
+        "icon": "bi-chat-heart-fill",
+        "color": "violet",
+        "level": 1,
+        "pairs": [
+            ("Good morning", "Bom dia"), ("Good afternoon", "Boa tarde"),
+            ("Good evening", "Boa noite (ao chegar)"), ("Good night", "Boa noite (ao sair)"),
+            ("How are you?", "Como você está?"), ("See you later", "Até mais"),
+            ("Nice to meet you", "Prazer em conhecer você"), ("You're welcome", "De nada"),
+        ],
+    },
+    {
+        "slug": "numbers",
+        "title": "Numbers",
+        "title_pt": "Números",
+        "icon": "bi-123",
+        "color": "cyan",
+        "level": 1,
+        "pairs": [
+            ("zero / oh", "zero"), ("one", "um"), ("two", "dois"), ("three", "três"),
+            ("four", "quatro"), ("five", "cinco"), ("six", "seis"), ("seven", "sete"),
+            ("eight", "oito"), ("nine", "nove"), ("twelve", "doze"), ("fifty", "cinquenta"),
+        ],
+    },
+    {
+        "slug": "colors",
+        "title": "Colors",
+        "title_pt": "Cores",
+        "icon": "bi-palette-fill",
+        "color": "pink",
+        "level": 1,
+        "pairs": [
+            ("red", "vermelho"), ("blue", "azul"), ("green", "verde"), ("yellow", "amarelo"),
+            ("orange", "laranja"), ("purple", "roxo"), ("pink", "rosa"), ("brown", "marrom"),
+            ("black", "preto"), ("white", "branco"), ("gray", "cinza"), ("navy", "azul-marinho"),
+        ],
+    },
+    {
+        "slug": "body-parts",
+        "title": "Body parts",
+        "title_pt": "Partes do corpo",
+        "icon": "bi-person-arms-up",
+        "color": "amber",
+        "level": 1,
+        "pairs": [
+            ("head", "cabeça"), ("eye", "olho"), ("ear", "orelha"), ("nose", "nariz"),
+            ("mouth", "boca"), ("hand", "mão"), ("arm", "braço"), ("leg", "perna"),
+            ("foot", "pé"), ("knee", "joelho"), ("shoulder", "ombro"), ("finger", "dedo"),
+        ],
+    },
+    {
+        "slug": "food-drinks",
+        "title": "Food & drinks",
+        "title_pt": "Comidas e bebidas",
+        "icon": "bi-cup-straw",
+        "color": "lime",
+        "level": 2,
+        "pairs": [
+            ("breakfast", "café da manhã"), ("rice", "arroz"), ("beans", "feijão"),
+            ("bread", "pão"), ("cheese", "queijo"), ("chicken", "frango"),
+            ("water", "água"), ("juice", "suco"), ("coffee", "café"),
+            ("tea", "chá"), ("dessert", "sobremesa"), ("bill", "conta"),
+        ],
+    },
+    {
+        "slug": "animals-fruits",
+        "title": "Animals & fruits",
+        "title_pt": "Animais e frutas",
+        "icon": "bi-apple",
+        "color": "coral",
+        "level": 2,
+        "pairs": [
+            ("dog", "cachorro"), ("cat", "gato"), ("bird", "pássaro"), ("horse", "cavalo"),
+            ("fish", "peixe"), ("lion", "leão"), ("apple", "maçã"), ("banana", "banana"),
+            ("grape", "uva"), ("strawberry", "morango"), ("pineapple", "abacaxi"),
+            ("watermelon", "melancia"),
+        ],
+    },
+    {
+        "slug": "places",
+        "title": "Places & directions",
+        "title_pt": "Lugares e direções",
+        "icon": "bi-signpost-split-fill",
+        "color": "blue",
+        "level": 2,
+        "pairs": [
+            ("school", "escola"), ("hospital", "hospital"), ("restaurant", "restaurante"),
+            ("airport", "aeroporto"), ("bus station", "rodoviária"), ("supermarket", "supermercado"),
+            ("turn left", "vire à esquerda"), ("turn right", "vire à direita"),
+            ("go straight", "siga em frente"), ("near", "perto"), ("far", "longe"),
+            ("across from", "em frente a"),
+        ],
+    },
+    {
+        "slug": "python-tech",
+        "title": "Python & technology",
+        "title_pt": "Python e tecnologia",
+        "icon": "bi-code-slash",
+        "color": "violet",
+        "level": 3,
+        "pairs": [
+            ("variable", "variável"), ("function", "função"), ("loop", "laço de repetição"),
+            ("bug", "falha no código"), ("debugging", "depuração"), ("database", "banco de dados"),
+            ("pull request", "solicitação de integração"), ("deployment", "implantação"),
+            ("framework", "estrutura de desenvolvimento"), ("endpoint", "ponto de acesso da API"),
+            ("deadline", "prazo final"), ("code review", "revisão de código"),
+        ],
+    },
+]
+
+MATCH_CATEGORY_MAP = {category["slug"]: category for category in MATCH_CATEGORIES}

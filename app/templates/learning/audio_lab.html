@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}{{ lesson.title }} — LinguaQuest{% endblock %}
+{% block body_class %}audio-lab-page{% endblock %}
+{% block content %}
+<section class="audio-lab-hero">
+  <img src="{{ url_for('static', filename='images/brand/course-everyday.webp') }}" alt="Dois adultos conversando em inglês em um café, com cartões ilustrando família, casa e rotina.">
+  <div class="audio-lab-overlay"></div>
+  <div class="container-fluid academy-container audio-lab-hero-content">
+    <a class="audio-back" href="{{ url_for('main.dashboard') }}"><i class="bi bi-arrow-left"></i> Voltar para a trilha</a>
+    <div><span class="academy-kicker"><i class="bi bi-headphones"></i> AUDIO & SPEAKING LAB</span><h1>{{ lesson.title }}</h1><p>{{ lesson.description }}</p><div class="audio-hero-meta"><span><i class="bi bi-soundwave"></i> 64 trechos</span><span><i class="bi bi-speedometer"></i> normal e lento</span><span><i class="bi bi-translate"></i> inglês + português</span></div></div>
+  </div>
+</section>
+<main class="container-fluid academy-container audio-lab-main">
+  <header class="audio-lab-toolbar">
+    <div><span class="academy-kicker dark">ESCUTE EM PARTES, FALE POR INTEIRO</span><h2>Escolha o que praticar</h2><p>Ouça, repita em voz alta e compare com a tradução.</p></div>
+    <div class="audio-lab-progress"><div><strong id="heardCount">{{ progress['heard_items'] if progress else 0 }}</strong><span>de 64 ouvidos</span></div><div class="audio-ring" style="--progress:{{ ((progress['heard_items'] if progress else 0) / 64 * 100)|round|int }}%"><i class="bi bi-headphones"></i></div></div>
+  </header>
+  <div class="audio-lab-controls">
+    <div class="audio-search"><i class="bi bi-search"></i><label class="visually-hidden" for="audioSearch">Pesquisar palavra ou tradução</label><input id="audioSearch" type="search" placeholder="Pesquisar palavra, frase ou tradução…"></div>
+    <div class="audio-group-tabs" role="tablist" aria-label="Partes da aula"><button class="active" type="button" data-group="all" role="tab" aria-selected="true">Todos</button>{% for group in lesson.groups %}<button type="button" data-group="{{ group.slug }}" role="tab" aria-selected="false">{{ group.title }}</button>{% endfor %}</div>
+  </div>
+  <section class="audio-card-grid" id="audioCardGrid" aria-label="Palavras e frases da aula">
+    {% for item in lesson['items'] %}
+    <article class="audio-phrase-card" data-id="{{ item.id }}" data-group="{{ item.slug }}" data-search="{{ item.english|lower }} {{ item.portuguese|lower }}">
+      <header><span>{{ '%02d'|format(item.id) }}</span><small>{{ item.title }}</small><i class="bi bi-check-circle-fill heard-mark" aria-hidden="true"></i></header>
+      <button class="audio-phrase-main" type="button" data-audio="{{ url_for('static', filename=item.audio_normal) }}" data-label="{{ item.english }}" aria-label="Ouvir {{ item.english }} em velocidade normal"><span lang="en-US">{{ item.english }}</span><i class="bi bi-play-fill"></i></button>
+      <p>{{ item.portuguese }}</p>
+      <div class="audio-phrase-actions"><button type="button" data-audio="{{ url_for('static', filename=item.audio_normal) }}" data-label="{{ item.english }} em velocidade normal"><i class="bi bi-volume-up-fill"></i> Normal</button><button type="button" data-audio="{{ url_for('static', filename=item.audio_slow) }}" data-label="{{ item.english }} devagar"><i class="bi bi-snail"></i> Devagar</button></div>
+    </article>
+    {% endfor %}
+  </section>
+  <div class="audio-no-results" id="audioNoResults" hidden><i class="bi bi-search"></i><h3>Nenhum trecho encontrado</h3><p>Tente pesquisar outra palavra em inglês ou português.</p></div>
+</main>
+<div class="audio-dock" id="audioDock" hidden>
+  <div class="audio-dock-inner"><button id="audioDockPlay" type="button" aria-label="Reproduzir ou pausar"><i class="bi bi-pause-fill"></i></button><div><small>TOCANDO AGORA</small><strong id="audioDockLabel">Selecione um áudio</strong></div><div class="audio-dock-wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><audio id="audioPlayer" preload="none"></audio><button id="audioDockClose" type="button" aria-label="Fechar reprodutor"><i class="bi bi-x-lg"></i></button></div>
+</div>
+<script id="audioLessonData" type="application/json">{{ {'saved': progress['heard_items'] if progress else 0}|tojson }}</script>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/audio-lab.js') }}"></script>{% endblock %}
